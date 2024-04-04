@@ -1,8 +1,10 @@
 package br.com.projeto.springbootapi2022.controle;
 
+import br.com.projeto.springbootapi2022.modelo.Cliente;
 import br.com.projeto.springbootapi2022.modelo.Pessoa;
 import br.com.projeto.springbootapi2022.repositorio.Repositorio;
 import br.com.projeto.springbootapi2022.servico.Servico;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -109,6 +111,13 @@ public List<Pessoa> idadeMaiorIgual(){
      public ResponseEntity<?> status(){
      return new  ResponseEntity <>(HttpStatus.CREATED);
     }
+
+
+    @PostMapping("/cliente")
+        public void cliente(@Valid @RequestBody Cliente obj ){
+
+    }
+
 
     }
 
