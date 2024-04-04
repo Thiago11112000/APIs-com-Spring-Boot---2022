@@ -33,7 +33,10 @@ public class Controle {
     public List<Pessoa> terminaCom(){
      return acao.findByNomeEndsWith("o");
     }
-
+@GetMapping("/api/somaIdades")
+ public  int somaIdades(){
+        return acao.somaIdades();
+}
 
     @GetMapping("/api/nomeContem")
     public  List<Pessoa> nomeContem(){
