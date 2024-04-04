@@ -11,7 +11,7 @@ import java.util.List;
 public interface Repositorio extends CrudRepository<Pessoa,Long> {
 
      List<Pessoa> findAll();
-
+      Pessoa findByCodigo(int codigo);
 }
 
 

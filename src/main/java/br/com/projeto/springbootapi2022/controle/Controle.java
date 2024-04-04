@@ -21,9 +21,12 @@ public class Controle {
     @GetMapping("/api")
     public List<Pessoa> selecionar(){
     return acao.findAll();
-
     }
 
+    @GetMapping("/api/{codigo}")
+    public Pessoa selecionarPeloCodigo(@PathVariable int codigo){
+        return acao.findByCodigo(codigo);
+    }
 
     @GetMapping("/")
     public String mensagem() {
