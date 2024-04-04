@@ -70,11 +70,10 @@ public List<Pessoa> idadeMaiorIgual(){
         }
 
 
-//    @DeleteMapping("/api/{codigo}")
-//    public void remover (@PathVariable int codigo){
-//    //    Pessoa obj = selecionarPeloCodigo(codigo);
-//     //   acao.delete(obj);
-
+    @DeleteMapping("/api/{codigo}")
+    public ResponseEntity<?> remover (@PathVariable int codigo) {
+        return servico.remover(codigo);
+    }
 
     @GetMapping("api/contador")
     public long contador(){
