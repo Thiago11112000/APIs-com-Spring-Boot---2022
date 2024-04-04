@@ -24,6 +24,17 @@ public class Controle {
         return acao.save(obj);
     }
 
+
+    @GetMapping("/api/iniciaCom")
+    public List<Pessoa>  iniciaCom(){
+      return acao.findByNomeStartsWith("a");
+    }
+    @GetMapping("/api/terminaCom")
+    public List<Pessoa> terminaCom(){
+     return acao.findByNomeEndsWith("o");
+    }
+
+
     @GetMapping("/api/nomeContem")
     public  List<Pessoa> nomeContem(){
         return acao.findByNomeContaining("L");
