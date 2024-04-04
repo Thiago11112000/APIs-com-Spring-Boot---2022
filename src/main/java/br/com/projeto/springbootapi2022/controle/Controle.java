@@ -5,6 +5,7 @@ import br.com.projeto.springbootapi2022.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -106,6 +107,12 @@ public List<Pessoa> idadeMaiorIgual(){
         return "seja  bem  vindo(a) " + nome;
     }
 
+
+    @GetMapping("/status")
+     public ResponseEntity<?> status(){
+     return new  ResponseEntity <>(HttpStatus.CREATED);
+
+    }
 
 
 
