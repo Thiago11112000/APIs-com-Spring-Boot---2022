@@ -47,6 +47,12 @@ public class Controle {
         acao.delete(obj);
     }
 
+    @GetMapping("api/contador")
+    public long contador(){
+        return acao.count();
+
+    }
+
     @GetMapping("/api/{codigo}")
     public Pessoa selecionarPeloCodigo(@PathVariable int codigo){
         return acao.findByCodigo(codigo);
