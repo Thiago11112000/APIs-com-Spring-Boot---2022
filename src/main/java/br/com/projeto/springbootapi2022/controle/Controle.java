@@ -37,6 +37,10 @@ public class Controle {
  public  int somaIdades(){
         return acao.somaIdades();
 }
+@GetMapping("/api/idadeMaiorIgual")
+public List<Pessoa> idadeMaiorIgual(){
+        return acao.idadeMaiorIgual(25);
+}
 
     @GetMapping("/api/nomeContem")
     public  List<Pessoa> nomeContem(){
