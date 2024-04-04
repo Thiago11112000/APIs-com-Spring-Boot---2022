@@ -24,6 +24,11 @@ public class Controle {
         return acao.save(obj);
     }
 
+    @GetMapping("/api/nomeContem")
+    public  List<Pessoa> nomeContem(){
+        return acao.findByNomeContaining("L");
+    }
+
     @GetMapping("/api/ordenarNomes2")
     public List<Pessoa> OrdenarNomes2(){
        return acao.findByNomeOrderByIdadeDesc("Robson");
