@@ -44,6 +44,24 @@ public class Servico {
             return new ResponseEntity<>(acao.findByCodigo(codigo), HttpStatus.OK);
         }
     }
+
+    public ResponseEntity<?> editar(Pessoa obj){
+
+        if(acao.countByCodigo(obj.getCodigo()) == 0){
+           mensagem.setMensagem("O código informado não existe");
+           return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        } else if (obj.getNome().equals("")) {
+          mensagem.setMensagem("É necessário informar um nome");
+          return  new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }else if (obj.getIdade() <= 0 ){
+          mensagem.setMensagem("Informe uma idade válida");
+            return  new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+
+        } else {
+            return new ResponseEntity<>(acao.save(obj), HttpStatus.OK);
+        }
+
+    }
 }
 
 

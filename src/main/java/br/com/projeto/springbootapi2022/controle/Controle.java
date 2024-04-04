@@ -63,28 +63,22 @@ public List<Pessoa> idadeMaiorIgual(){
     }
 
 
-    @PutMapping("/api/{codigo}")
-    public Pessoa editar(@PathVariable int codigo, @RequestBody Pessoa obj) {
-        Pessoa pessoaExistente = acao.findByCodigo(codigo);
-        if (pessoaExistente != null) {
-            pessoaExistente.setNome(obj.getNome());
-            pessoaExistente.setIdade(obj.getIdade());
-            return acao.save(pessoaExistente);
-        } else {
-            throw new RuntimeException("Pessoa não encontrada com o código: " + codigo);
-        }
-    }
+    @PutMapping("/api")
+    public ResponseEntity<?> editar(@RequestBody Pessoa obj) {
+       return servico.editar(obj);
 
-    @DeleteMapping("/api/{codigo}")
-    public void remover (@PathVariable int codigo){
-    //    Pessoa obj = selecionarPeloCodigo(codigo);
-     //   acao.delete(obj);
-    }
+        }
+
+
+//    @DeleteMapping("/api/{codigo}")
+//    public void remover (@PathVariable int codigo){
+//    //    Pessoa obj = selecionarPeloCodigo(codigo);
+//     //   acao.delete(obj);
+
 
     @GetMapping("api/contador")
     public long contador(){
         return acao.count();
-
     }
 
     @GetMapping("/api/{codigo}")
