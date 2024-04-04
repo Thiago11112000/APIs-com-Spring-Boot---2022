@@ -12,6 +12,11 @@ public class Controle {
     @Autowired
     private Repositorio acao;
 
+    @PostMapping("/api")
+    public  Pessoa cadastrar(@RequestBody Pessoa obj){
+        return acao.save(obj);
+    }
+
     @GetMapping("/")
     public String mensagem() {
         return "olá mundo";
@@ -26,9 +31,7 @@ public class Controle {
     public String boasVindas(@PathVariable String nome){
         return "seja  bem  vindo(a) " + nome;
     }
-    @PostMapping("/pessoa")
-    public Pessoa pessoa(@RequestBody Pessoa p){
-     return p;
+
     }
 
-}
+
