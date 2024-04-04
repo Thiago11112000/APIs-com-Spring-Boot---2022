@@ -57,9 +57,9 @@ public List<Pessoa> idadeMaiorIgual(){
        return acao.findByNomeOrderByIdadeDesc("Robson");
     }
 
-            @GetMapping("/api")
-    public List<Pessoa> selecionar(){
-    return acao.findAll();
+    @GetMapping("/api")
+    public   ResponseEntity<?> selecionar(){
+    return servico.selecionar();
     }
 
 

@@ -31,5 +31,10 @@ public class Servico {
         }
 
     }
+
+     public  ResponseEntity<?> selecionar(){
+        return new ResponseEntity<>(acao.findAll(),HttpStatus.OK);
+    }
 }
+
 
