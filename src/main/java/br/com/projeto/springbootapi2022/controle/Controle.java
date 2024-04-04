@@ -40,6 +40,13 @@ public class Controle {
             throw new RuntimeException("Pessoa não encontrada com o código: " + codigo);
         }
     }
+
+    @DeleteMapping("/api/{codigo}")
+    public void remover (@PathVariable int codigo){
+        Pessoa obj = selecionarPeloCodigo(codigo);
+        acao.delete(obj);
+    }
+
     @GetMapping("/api/{codigo}")
     public Pessoa selecionarPeloCodigo(@PathVariable int codigo){
         return acao.findByCodigo(codigo);
