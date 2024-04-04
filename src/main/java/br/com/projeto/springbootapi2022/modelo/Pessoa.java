@@ -1,6 +1,7 @@
 package br.com.projeto.springbootapi2022.modelo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 @Getter

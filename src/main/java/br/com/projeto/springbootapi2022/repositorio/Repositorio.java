@@ -5,7 +5,13 @@ import br.com.projeto.springbootapi2022.modelo.Pessoa;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface Repositorio extends CrudRepository<Pessoa,Long> {
 
+     List<Pessoa> findAll();
+
 }
+
+

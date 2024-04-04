@@ -5,6 +5,8 @@ import br.com.projeto.springbootapi2022.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class Controle {
@@ -16,6 +18,12 @@ public class Controle {
     public  Pessoa cadastrar(@RequestBody Pessoa obj){
         return acao.save(obj);
     }
+    @GetMapping("/api")
+    public List<Pessoa> selecionar(){
+    return acao.findAll();
+
+    }
+
 
     @GetMapping("/")
     public String mensagem() {
