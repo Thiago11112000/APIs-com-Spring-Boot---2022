@@ -2,6 +2,7 @@ package br.com.projeto.springbootapi2022.controle;
 
 import br.com.projeto.springbootapi2022.modelo.Pessoa;
 import br.com.projeto.springbootapi2022.repositorio.Repositorio;
+import br.com.projeto.springbootapi2022.servico.Servico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,15 @@ public class Controle {
 
 
     @Autowired
-    private Repositorio acao;
+    private  Repositorio acao;
+
+    @Autowired
+    private Servico servico;
 
 
     @PostMapping("/api")
-    public  Pessoa cadastrar(@RequestBody Pessoa obj){
-        return acao.save(obj);
+    public  ResponseEntity<?> cadastrar(@RequestBody Pessoa obj){
+        return  servico.cadastrar(obj);
     }
 
 
