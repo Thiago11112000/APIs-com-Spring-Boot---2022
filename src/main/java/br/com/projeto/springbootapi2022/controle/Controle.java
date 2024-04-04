@@ -3,13 +3,18 @@ package br.com.projeto.springbootapi2022.controle;
 import br.com.projeto.springbootapi2022.modelo.Pessoa;
 import br.com.projeto.springbootapi2022.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 
 @RestController
 public class Controle {
+
+
 
     @Autowired
     private Repositorio acao;
@@ -23,6 +28,18 @@ public class Controle {
     return acao.findAll();
     }
 
+
+    @PutMapping("/api/{codigo}")
+    public Pessoa editar(@PathVariable int codigo, @RequestBody Pessoa obj) {
+        Pessoa pessoaExistente = acao.findByCodigo(codigo);
+        if (pessoaExistente != null) {
+            pessoaExistente.setNome(obj.getNome());
+            pessoaExistente.setIdade(obj.getIdade());
+            return acao.save(pessoaExistente);
+        } else {
+            throw new RuntimeException("Pessoa não encontrada com o código: " + codigo);
+        }
+    }
     @GetMapping("/api/{codigo}")
     public Pessoa selecionarPeloCodigo(@PathVariable int codigo){
         return acao.findByCodigo(codigo);
