@@ -77,8 +77,8 @@ public List<Pessoa> idadeMaiorIgual(){
 
     @DeleteMapping("/api/{codigo}")
     public void remover (@PathVariable int codigo){
-        Pessoa obj = selecionarPeloCodigo(codigo);
-        acao.delete(obj);
+    //    Pessoa obj = selecionarPeloCodigo(codigo);
+     //   acao.delete(obj);
     }
 
     @GetMapping("api/contador")
@@ -88,8 +88,8 @@ public List<Pessoa> idadeMaiorIgual(){
     }
 
     @GetMapping("/api/{codigo}")
-    public Pessoa selecionarPeloCodigo(@PathVariable int codigo){
-        return acao.findByCodigo(codigo);
+    public ResponseEntity<?> selecionarPeloCodigo(@PathVariable int codigo){
+        return servico.selecionarPeloCodigo(codigo);
     }
 
 
@@ -115,11 +115,11 @@ public List<Pessoa> idadeMaiorIgual(){
     @GetMapping("/status")
      public ResponseEntity<?> status(){
      return new  ResponseEntity <>(HttpStatus.CREATED);
+    }
 
     }
 
 
 
-    }
 
 

@@ -26,14 +26,23 @@ public class Servico {
         } else if (obj.getIdade() <= 0) {
             mensagem.setMensagem("Informe uma idade válida");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        }else{
-            return new ResponseEntity<>( acao.save(obj), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(acao.save(obj), HttpStatus.CREATED);
         }
 
     }
 
-     public  ResponseEntity<?> selecionar(){
-        return new ResponseEntity<>(acao.findAll(),HttpStatus.OK);
+    public ResponseEntity<?> selecionar() {
+        return new ResponseEntity<>(acao.findAll(), HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> selecionarPeloCodigo(int codigo) {
+        if (acao.countByCodigo(codigo) == 0) {
+           mensagem.setMensagem("Não foi encontrada nenhuma pessoa.");
+           return new ResponseEntity<>(mensagem,HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(acao.findByCodigo(codigo), HttpStatus.OK);
+        }
     }
 }
 

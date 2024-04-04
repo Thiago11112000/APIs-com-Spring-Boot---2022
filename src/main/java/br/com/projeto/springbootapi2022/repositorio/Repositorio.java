@@ -4,6 +4,7 @@ package br.com.projeto.springbootapi2022.repositorio;
 import br.com.projeto.springbootapi2022.modelo.Pessoa;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public interface Repositorio extends CrudRepository<Pessoa,Long> {
 
     @Query(value =  "SELECT  * FROM PESSOAS WHERE idade >= :idade ", nativeQuery = true)
     List<Pessoa> idadeMaiorIgual(int idade);
+
+    int countByCodigo(int codigo);
+
 
 }
 
